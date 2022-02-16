@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MyPlaylist.Models.MyPlaylistOdaberiVM
+@{
+}
+
+<form style="width: 100%; height: 400px; background-color: burlywood; padding: 10px; margin: auto;">
+    <input asp-for="KategorijaId" value="@Model.KategorijaId" hidden />
+    <div class="slika" style="width:20%; height:50px; float:left;">
+        <img src="https://img.freepik.com/free-vector/playlist-neon-sign-black-brick-wall_77399-755.jpg?size=338&ext=jpg" width="20%;" height="50px;" />
+    </div>
+
+    <div class="naslov" style="width:80%; height:50px; float:left; ">
+        <h1 style="font-size: 12px;">My Playlist za kategoriju</h1>
+        @Model.Kategorija
+    </div>
+
+    <div class="tabela" style="width:100%; background-color:white;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Naziv pjesma</th>
+                    <th>Naziv izvodjaca</th>
+                    <th>Url</th>
+                    <th>Ocjena</th>
+                    <th>Favorit</th>
+                    <th>Datum unosa</th>
+                    <th>Datum editovanja</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.rows)
+                {
+                    <tr>
+                        <td>@x.NazivPjesme</td>
+                        <td>@x.NazivIzvodjaca</td>
+                        <td>@x.Url</td>
+                        <td>@x.Ocjena</td>
+                        <td>@x.IsFavorit</td>
+                        <td>@x.DatumUnosa</td>
+                        <td>@x.DatumEditovanja</td>
+                        <td>
+                            <a class="btn-group-sm" asp-controller="MyPlaylist" asp-action="Obrisi" asp-route-Id="@x.PjesmaId">Obrisi</a>|
+                            <a class="btn-group-sm" asp-controller="MyPlaylist" asp-action="Uredi" asp-route-Id="@x.PjesmaId">Uredi</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-outline-primary" asp-controller="MyPlaylist" asp-action="Dodaj" asp-route-Id="@Model.KategorijaId">Dodaj</a>
+</form>

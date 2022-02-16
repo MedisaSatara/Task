@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MyPlaylist.Models.MyPlaylistDodajVM
+@{
+}
+
+<form asp-controller="MyPlaylist" asp-action="Snimi" style="width: 100%; height: 700px; background-color: burlywood; padding: 5px; margin: auto;">
+    <input asp-for="KategorijaId" value="@Model.KategorijaId" hidden />
+    <h1>Dodaj pjesmu:</h1>
+    <div class="form-group">
+        <label class="control-label">Naziv pjesme</label>
+        <input asp-for="NazivPjesme" value="@Model.NazivPjesme" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Naziv izvodjaca</label>
+        <input asp-for="NazivIzvodjaca" value="@Model.NazivIzvodjaca" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Url</label>
+        <input asp-for="Url" value="@Model.Url" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Ocjena</label>
+        <input asp-for="Ocjena" value="@Model.Ocjena" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Favorit</label>
+        <input asp-for="IsFavorit" value="@Model.IsFavorit" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Datum unosa</label>
+        <input asp-for="DatumUnosa" value="@Model.DatumUnosa" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Datum editovanja</label>
+        <input asp-for="DatumEditovanja" value="@Model.DatumEditovanja" type="date" class="form-control" />
+    </div>
+    <div>
+        <input type="submit" value="Snimi" />
+    </div>
+</form>
